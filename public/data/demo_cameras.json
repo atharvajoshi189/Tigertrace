@@ -1,0 +1,122 @@
+[
+  {
+    "id": "CT-1",
+    "name": "Sector A Camera",
+    "pos": [
+      20.249885210130614,
+      79.38631202608224
+    ],
+    "status": "Online",
+    "lastDetection": "Tiger (High Confidence)",
+    "image": "https://images.unsplash.com/photo-1568283664722-6b941da7d5d2?auto=format&fit=crop&q=80&w=400&h=300",
+    "timestamp": 1791600538493.3984
+  },
+  {
+    "id": "CT-2",
+    "name": "Sector B Camera",
+    "pos": [
+      20.254428625456132,
+      79.35763050928828
+    ],
+    "status": "Online",
+    "lastDetection": "Leopard (High Confidence)",
+    "image": "https://images.unsplash.com/photo-1549471013-3364d7320f21?auto=format&fit=crop&q=80&w=400&h=300",
+    "timestamp": 1791628689899.3337
+  },
+  {
+    "id": "CT-3",
+    "name": "Sector C Camera",
+    "pos": [
+      20.33340450185067,
+      79.3859352033235
+    ],
+    "status": "Online",
+    "lastDetection": "Tiger (High Confidence)",
+    "image": "https://images.unsplash.com/photo-1549471013-3364d7320f21?auto=format&fit=crop&q=80&w=400&h=300",
+    "timestamp": 1791614650666.9983
+  },
+  {
+    "id": "CT-4",
+    "name": "Sector D Camera",
+    "pos": [
+      20.17660174284024,
+      79.36221001531688
+    ],
+    "status": "Online",
+    "lastDetection": "Tiger (High Confidence)",
+    "image": "https://images.unsplash.com/photo-1549471013-3364d7320f21?auto=format&fit=crop&q=80&w=400&h=300",
+    "timestamp": 1791582453049.8281
+  },
+  {
+    "id": "CT-5",
+    "name": "Sector E Camera",
+    "pos": [
+      20.201494244458743,
+      79.42202824626963
+    ],
+    "status": "Online",
+    "lastDetection": "Tiger (High Confidence)",
+    "image": "https://images.unsplash.com/photo-1549471013-3364d7320f21?auto=format&fit=crop&q=80&w=400&h=300",
+    "timestamp": 1791621285071.7292
+  },
+  {
+    "id": "CT-6",
+    "name": "Sector F Camera",
+    "pos": [
+      20.273237565800617,
+      79.26196034118898
+    ],
+    "status": "Online",
+    "lastDetection": "Leopard (High Confidence)",
+    "image": "https://images.unsplash.com/photo-1549471013-3364d7320f21?auto=format&fit=crop&q=80&w=400&h=300",
+    "timestamp": 1791611458762.0479
+  },
+  {
+    "id": "CT-7",
+    "name": "Sector G Camera",
+    "pos": [
+      20.309480547270216,
+      79.25388818138883
+    ],
+    "status": "Offline",
+    "lastDetection": "Leopard (High Confidence)",
+    "image": "https://images.unsplash.com/photo-1549471013-3364d7320f21?auto=format&fit=crop&q=80&w=400&h=300",
+    "timestamp": 1791631316639.3884
+  },
+  {
+    "id": "CT-8",
+    "name": "Sector H Camera",
+    "pos": [
+      20.289666352741463,
+      79.24766762521202
+    ],
+    "status": "Offline",
+    "lastDetection": "Leopard (High Confidence)",
+    "image": "https://images.unsplash.com/photo-1568283664722-6b941da7d5d2?auto=format&fit=crop&q=80&w=400&h=300",
+    "timestamp": 1791636058371.889
+  },
+  {
+    "id": "CT-9",
+    "name": "Sector I Camera",
+    "pos": [
+      20.302592386905612,
+      79.3886113265905
+    ],
+    "status": "Online",
+    "lastDetection": "Tiger (High Confidence)",
+    "image": "https://images.unsplash.com/photo-1568283664722-6b941da7d5d2?auto=format&fit=crop&q=80&w=400&h=300",
+    "timestamp": 1791629185049.4414
+  },
+  {
+    "id": "CT-10",
+    "name": "Sector J Camera",
+    "pos": [
+      20.2812850694905,
+      79.40950856969117
+    ],
+    "status": "Online",
+    "lastDetection": "Tiger (High Confidence)",
+    "image": "https://images.unsplash.com/photo-1568283664722-6b941da7d5d2?auto=format&fit=crop&q=80&w=400&h=300",
+    "timestamp": 1791620545077.397
+  }
+]

@@ -1,0 +1,365 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.386,
+          20.33947818472546
+        ]
+      },
+      "properties": {
+        "id": "gate_0",
+        "name": "Navegaon Gate",
+        "category": "Tourism Gate",
+        "zone": "Core",
+        "source": "Visual Estimation from Reference Map",
+        "verified": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.425,
+          20.351
+        ]
+      },
+      "properties": {
+        "id": "gate_1",
+        "name": "Kolara Gate & Chouradeo Gate",
+        "category": "Tourism Gate",
+        "zone": "Core",
+        "source": "Visual Estimation from Reference Map",
+        "verified": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.347,
+          20.265
+        ]
+      },
+      "properties": {
+        "id": "gate_2",
+        "name": "Khutwanda Gate",
+        "category": "Tourism Gate",
+        "zone": "Core",
+        "source": "Visual Estimation from Reference Map",
+        "verified": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.36984567106745,
+          20.204188816817958
+        ]
+      },
+      "properties": {
+        "id": "gate_3",
+        "name": "Moharli Gate",
+        "category": "Tourism Gate",
+        "zone": "Core",
+        "source": "Visual Estimation from Reference Map",
+        "verified": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.48015432893254,
+          20.204188816817958
+        ]
+      },
+      "properties": {
+        "id": "gate_4",
+        "name": "Zari Gate",
+        "category": "Tourism Gate",
+        "zone": "Core",
+        "source": "Visual Estimation from Reference Map",
+        "verified": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.503,
+          20.265
+        ]
+      },
+      "properties": {
+        "id": "gate_5",
+        "name": "Pangadi Gate",
+        "category": "Tourism Gate",
+        "zone": "Core",
+        "source": "Visual Estimation from Reference Map",
+        "verified": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.26924594810474,
+          20.327504181192765
+        ]
+      },
+      "properties": {
+        "id": "gate_6",
+        "name": "Nimdhela Gate",
+        "category": "Tourism Gate",
+        "zone": "Buffer",
+        "source": "Visual Estimation from Reference Map",
+        "verified": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.30779705101833,
+          20.39422376426184
+        ]
+      },
+      "properties": {
+        "id": "gate_7",
+        "name": "Ramdegi Gate / Navegaon Buffer Gate",
+        "category": "Tourism Gate",
+        "zone": "Buffer",
+        "source": "Visual Estimation from Reference Map",
+        "verified": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.48168983875622,
+          20.436728826448626
+        ]
+      },
+      "properties": {
+        "id": "gate_8",
+        "name": "Alizanja Gate",
+        "category": "Tourism Gate",
+        "zone": "Buffer",
+        "source": "Visual Estimation from Reference Map",
+        "verified": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.53154204630555,
+          20.404994621979995
+        ]
+      },
+      "properties": {
+        "id": "gate_9",
+        "name": "Madnapur Gate",
+        "category": "Tourism Gate",
+        "zone": "Buffer",
+        "source": "Visual Estimation from Reference Map",
+        "verified": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.55197186644696,
+          20.382469435670217
+        ]
+      },
+      "properties": {
+        "id": "gate_10",
+        "name": "Belara Gate",
+        "category": "Tourism Gate",
+        "zone": "Buffer",
+        "source": "Visual Estimation from Reference Map",
+        "verified": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.56854371067726,
+          20.356375
+        ]
+      },
+      "properties": {
+        "id": "gate_11",
+        "name": "Palasgaon Gate",
+        "category": "Tourism Gate",
+        "zone": "Buffer",
+        "source": "Visual Estimation from Reference Map",
+        "verified": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.58510220570741,
+          20.312299180492488
+        ]
+      },
+      "properties": {
+        "id": "gate_12",
+        "name": "Shirkada Gate",
+        "category": "Tourism Gate",
+        "zone": "Buffer",
+        "source": "Visual Estimation from Reference Map",
+        "verified": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.58823188506177,
+          20.23326579553137
+        ]
+      },
+      "properties": {
+        "id": "gate_13",
+        "name": "Pangadi Aswal Chuha Gate",
+        "category": "Tourism Gate",
+        "zone": "Buffer",
+        "source": "Visual Estimation from Reference Map",
+        "verified": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.56854371067726,
+          20.173625
+        ]
+      },
+      "properties": {
+        "id": "gate_14",
+        "name": "Somnath Gate",
+        "category": "Tourism Gate",
+        "zone": "Buffer",
+        "source": "Visual Estimation from Reference Map",
+        "verified": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.53154204630555,
+          20.125005378020006
+        ]
+      },
+      "properties": {
+        "id": "gate_15",
+        "name": "Kesla ghat Gate",
+        "category": "Tourism Gate",
+        "zone": "Buffer",
+        "source": "Visual Estimation from Reference Map",
+        "verified": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.48168983875622,
+          20.093271173551376
+        ]
+      },
+      "properties": {
+        "id": "gate_16",
+        "name": "Peth-Zari Gate",
+        "category": "Tourism Gate",
+        "zone": "Buffer",
+        "source": "Visual Estimation from Reference Map",
+        "verified": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.36831016124377,
+          20.093271173551376
+        ]
+      },
+      "properties": {
+        "id": "gate_17",
+        "name": "Mamla Gate",
+        "category": "Tourism Gate",
+        "zone": "Buffer",
+        "source": "Visual Estimation from Reference Map",
+        "verified": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.342125,
+          20.106733857458394
+        ]
+      },
+      "properties": {
+        "id": "gate_18",
+        "name": "Agarzari Gate & Dewada Adegaon Gate",
+        "category": "Tourism Gate",
+        "zone": "Buffer",
+        "source": "Visual Estimation from Reference Map",
+        "verified": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.31845795369445,
+          20.125005378020006
+        ]
+      },
+      "properties": {
+        "id": "gate_19",
+        "name": "Junona Gate",
+        "category": "Tourism Gate",
+        "zone": "Buffer",
+        "source": "Visual Estimation from Reference Map",
+        "verified": false
+      }
+    }
+  ]
+}
