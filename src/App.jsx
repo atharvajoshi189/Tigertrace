@@ -1,24 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import TrackingMap from './components/Map/TrackingMap';
+import TrackingMap3D from './components/Map/TrackingMap3D';
 import TopBar from './components/UI/TopBar';
+import LeftNav from './components/UI/LeftNav';
+import LayerPanel from './components/UI/LayerPanel';
 import PlaybackPanel from './components/UI/PlaybackPanel';
 import DetailPanel from './components/UI/DetailPanel';
-import 'leaflet/dist/leaflet.css';
 
 function App() {
-  const [mapStyle, setMapStyle] = useState('street');
+  const [mapStyle, setMapStyle] = useState('satellite');
+  const [is3D, setIs3D] = useState(true);
   
   const [activeLayers, setActiveLayers] = useState({
     boundary: true,
     coreZone: true,
     tigers: true,
-    leopards: false,
     trails: true,
     cameraTraps: true,
-    waterBodies: false,
-    heatmap: false,
     gates: true,
-    villages: true
+    villages: true,
+    waterBodies: true,
+    heatmap: false
   });
   
   const [currentTime, setCurrentTime] = useState(Date.now());
@@ -26,9 +27,17 @@ function App() {
   
   const [isPlaying, setIsPlaying] = useState(false);
   const [playbackSpeed, setPlaybackSpeed] = useState(1);
-  const [overlayOpacity, setOverlayOpacity] = useState(0.8);
   const [appData, setAppData] = useState(null);
   const [selectedFeature, setSelectedFeature] = useState(null);
+  const [trackedAnimalId, setTrackedAnimalId] = useState('T-1'); // Default to single tracked animal (T-1)
+  const [trackingMode, setTrackingMode] = useState('single'); // 'single' by default so not all animals track at same time
+
+  const handleSelectFeature = (feat) => {
+    setSelectedFeature(feat);
+    if (feat && (feat.waypoints || feat.type === 'tiger' || feat.type === 'leopard' || feat.type === 'bear' || feat.type === 'dog' || feat.type === 'pangolin')) {
+      setTrackedAnimalId(feat.id);
+    }
+  };
 
   useEffect(() => {
     Promise.all([
@@ -43,7 +52,7 @@ function App() {
     ]).then(([animals, cameras, waterBodies, simTime, boundary, coreZone, gates, villages]) => {
       setAppData({ animals, cameras, waterBodies, boundary, coreZone, gates, villages });
       setTimeBounds(simTime);
-      setCurrentTime(simTime.start);
+      setCurrentTime(simTime.end);
     }).catch(console.error);
   }, []);
 
@@ -66,7 +75,7 @@ function App() {
   };
 
   if (!appData || !timeBounds) {
-    return <div style={{ color: 'white', padding: '20px' }}>Loading geospatial data...</div>;
+    return <div style={{ color: 'var(--text-main)', padding: '20px', background: 'var(--bg-dark)' }}>Loading geospatial data...</div>;
   }
 
   return (
@@ -74,36 +83,69 @@ function App() {
       <TopBar 
         mapStyle={mapStyle} 
         setMapStyle={setMapStyle} 
-        activeLayers={activeLayers}
-        toggleLayer={toggleLayer}
+        is3D={is3D}
+        setIs3D={setIs3D}
+        appData={appData}
+        setSelectedFeature={handleSelectFeature}
       />
       
-      <div className="map-wrapper">
-        <TrackingMap 
-          mapStyle={mapStyle}
-          activeLayers={activeLayers}
-          currentTime={currentTime}
-          overlayOpacity={overlayOpacity}
-          appData={appData}
-          setSelectedFeature={setSelectedFeature}
-        />
+      <div className="main-content">
+        <LeftNav />
 
-        {selectedFeature && (
-          <DetailPanel 
-            feature={selectedFeature} 
-            onClose={() => setSelectedFeature(null)} 
+        <div className="map-wrapper">
+          <TrackingMap3D 
+            mapStyle={mapStyle}
+            is3D={is3D}
+            activeLayers={activeLayers}
+            currentTime={currentTime}
+            appData={appData}
+            selectedFeature={selectedFeature}
+            setSelectedFeature={handleSelectFeature}
+            trackedAnimalId={trackedAnimalId}
+            setTrackedAnimalId={setTrackedAnimalId}
+            trackingMode={trackingMode}
+            setTrackingMode={setTrackingMode}
           />
-        )}
 
-        <PlaybackPanel 
-          isPlaying={isPlaying}
-          setIsPlaying={setIsPlaying}
-          currentTime={currentTime}
-          setCurrentTime={setCurrentTime}
-          playbackSpeed={playbackSpeed}
-          setPlaybackSpeed={setPlaybackSpeed}
-          timeBounds={timeBounds}
-        />
+          <LayerPanel 
+            activeLayers={activeLayers} 
+            toggleLayer={toggleLayer} 
+            appData={appData}
+            trackedAnimalId={trackedAnimalId}
+            setTrackedAnimalId={setTrackedAnimalId}
+            trackingMode={trackingMode}
+            setTrackingMode={setTrackingMode}
+            setSelectedFeature={handleSelectFeature}
+          />
+
+          {selectedFeature && (
+            <DetailPanel 
+              feature={selectedFeature} 
+              onClose={() => setSelectedFeature(null)} 
+              onSelectFeature={handleSelectFeature}
+              setTrackedAnimalId={setTrackedAnimalId}
+              appData={appData}
+            />
+          )}
+
+          <PlaybackPanel 
+            isPlaying={isPlaying}
+            setIsPlaying={setIsPlaying}
+            currentTime={currentTime}
+            setCurrentTime={setCurrentTime}
+            playbackSpeed={playbackSpeed}
+            setPlaybackSpeed={setPlaybackSpeed}
+            timeBounds={timeBounds}
+          />
+
+          {/* Reserve Overview Inset */}
+          <div className="overview-inset">
+            <div className="overview-map">
+              <div className="overview-viewport"></div>
+            </div>
+            <span>Tadoba Reserve Overview</span>
+          </div>
+        </div>
       </div>
     </div>
   );

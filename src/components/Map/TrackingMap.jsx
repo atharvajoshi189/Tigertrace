@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MapContainer, TileLayer, GeoJSON, Marker, Polyline, Circle, Tooltip, useMapEvents, useMap, ScaleControl } from 'react-leaflet';
+import { MapContainer, TileLayer, GeoJSON, Marker, Polyline, Circle, CircleMarker, Tooltip, useMapEvents, useMap, ScaleControl } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import L from 'leaflet';
 
@@ -81,7 +81,7 @@ const CoordinateDisplay = () => {
   );
 };
 
-const TrackingMap = ({ mapStyle, activeLayers, currentTime, overlayOpacity, appData, setSelectedFeature }) => {
+const TrackingMap = ({ mapStyle, activeLayers, currentTime, overlayOpacity, appData, setSelectedFeature, trackedAnimalId, setTrackedAnimalId, trackingMode = 'single' }) => {
   const { animals: { tigers, leopards, slothBears = [], wildDogs = [], pangolins = [] }, cameras, waterBodies, boundary, coreZone, gates, villages } = appData;
   const [zoomLevel, setZoomLevel] = useState(11);
 
@@ -123,7 +123,11 @@ const TrackingMap = ({ mapStyle, activeLayers, currentTime, overlayOpacity, appD
   };
 
   const renderAnimal = (animal, color, currentZoom) => {
+    const isTracked = (trackingMode === 'all' || (trackedAnimalId ? animal.id === trackedAnimalId : animal.id === 'T-1'));
+    if (!isTracked) return null;
+
     const currentWp = getPositionAtTime(animal.waypoints, currentTime);
+    if (!currentWp) return null;
     const trail = getHistoricalTrail(animal.waypoints, currentTime);
     
     let icon = tigerIcon;
@@ -137,15 +141,57 @@ const TrackingMap = ({ mapStyle, activeLayers, currentTime, overlayOpacity, appD
     return (
       <React.Fragment key={animal.id}>
         {/* Historical trail */}
-        {activeLayers.trails && trail.length > 1 && currentZoom >= 11 && (
+        {activeLayers.trails && trail.length > 1 && (trackingMode === 'all' || (trackedAnimalId ? animal.id === trackedAnimalId : animal.id === 'T-1')) && (
           <Polyline 
             positions={trail} 
             color={color} 
             weight={3} 
-            opacity={0.4 * overlayOpacity} 
-            dashArray={currentWp.isInterpolated ? "5, 10" : ""}
+            opacity={0.85 * overlayOpacity} 
+            dashArray="6, 6"
           />
         )}
+
+        {/* Camera Trap Sightings along Trail */}
+        {activeLayers.trails && (trackingMode === 'all' || (trackedAnimalId ? animal.id === trackedAnimalId : animal.id === 'T-1')) && animal.sightings && animal.sightings.filter(s => s.time <= currentTime).map((s, idx) => (
+          <CircleMarker
+            key={`sighting-${animal.id}-${idx}`}
+            center={s.pos}
+            radius={7}
+            pathOptions={{
+              color: '#ffffff',
+              weight: 2,
+              fillColor: '#8b5cf6',
+              fillOpacity: 1
+            }}
+            eventHandlers={{
+              click: () => {
+                setSelectedFeature({
+                  emoji: '📸',
+                  name: `${animal.name} @ ${s.cameraName}`,
+                  type: 'sighting',
+                  category: 'Camera Trap Sighting',
+                  sightingId: s.sightingId,
+                  animalId: animal.id,
+                  animalName: animal.name,
+                  animalType: animal.type,
+                  cameraId: s.cameraId,
+                  cameraName: s.cameraName,
+                  pos: s.pos,
+                  timestamp: s.time,
+                  image: s.image,
+                  confidence: s.confidence,
+                  behavior: s.behavior,
+                  notes: s.notes,
+                  source: 'Automated Motion Trap'
+                });
+              }
+            }}
+          >
+            <Tooltip permanent={false} direction="top">
+              📸 {animal.name} @ {s.cameraName}
+            </Tooltip>
+          </CircleMarker>
+        ))}
         
         {/* Current position */}
         <Marker 
@@ -160,6 +206,7 @@ const TrackingMap = ({ mapStyle, activeLayers, currentTime, overlayOpacity, appD
                 isInterpolated: currentWp.isInterpolated,
                 source: currentWp.isInterpolated ? 'Interpolated Location' : 'Verified GPS Ping'
               });
+              if (setTrackedAnimalId) setTrackedAnimalId(animal.id);
             }
           }}
         >
@@ -244,7 +291,8 @@ const TrackingMap = ({ mapStyle, activeLayers, currentTime, overlayOpacity, appD
                 layer.on('click', () => {
                   setSelectedFeature({
                     emoji: '🏕️',
-                    ...feature.properties
+                    ...feature.properties,
+                    geometry: feature.geometry
                   });
                 });
               }}
@@ -325,12 +373,13 @@ const TrackingMap = ({ mapStyle, activeLayers, currentTime, overlayOpacity, appD
                 eventHandlers={{
                   click: () => {
                     setSelectedFeature({
-                      emoji: '📸',
+                      emoji: '📷',
                       name: c.name,
                       id: c.id,
                       category: 'Camera Trap',
                       source: 'Station Data',
-                      zone: 'Reserve'
+                      zone: 'Reserve',
+                      ...c
                     });
                   }
                 }}
